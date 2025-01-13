@@ -1,5 +1,3 @@
-
-
 import Header from "./components/Header";
 import { Routes, Route, BrowserRouter } from "react-router";
 import Home from "./pages/Home";
