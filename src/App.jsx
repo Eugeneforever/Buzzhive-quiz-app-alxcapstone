@@ -20,12 +20,13 @@ function App() {
 			}${difficulty && `&difficulty=${difficulty}`}&type=multiple`
 		);
 		setQuestions(data.results);
+		console.log (data.results);
 	};
 
 	return (
 		<BrowserRouter>
 			<div className="font-montserrat">
-				<Header />
+				<Header setScore={setScore} />
 
 				<Routes>
 					<Route path="/" element={<Intro />} />
@@ -53,7 +54,7 @@ function App() {
 					/>
 					<Route
 						path="/result"
-						element={<Result score={score} user={user} />}
+						element={<Result score={score} user={user} setScore={setScore} />}
 					/>
 					<Route path="*" element={<NotFound />}/>
 				</Routes>
