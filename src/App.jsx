@@ -6,6 +6,7 @@ import Result from "./pages/Result";
 import Intro from "./pages/Intro";
 import { useState } from "react";
 import axios from "axios";
+import NotFound from "./components/NotFound";
 
 function App() {
 	const [user, setUser] = useState("");
@@ -54,6 +55,7 @@ function App() {
 						path="/result"
 						element={<Result score={score} user={user} />}
 					/>
+					<Route path="*" element={<NotFound />}/>
 				</Routes>
 			</div>
 		</BrowserRouter>
