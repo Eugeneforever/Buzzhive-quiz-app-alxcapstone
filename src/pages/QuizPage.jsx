@@ -8,8 +8,6 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 
 	useEffect(() => {
-	
-
 		setPossibleAnswers(
 			questions &&
 				handleShuffle([
@@ -18,7 +16,6 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 				])
 		);
 	}, [currentQuestion, questions]);
-
 
 	const handleShuffle = (lists) => {
 		return lists.sort(() => Math.random() - 0.5);
@@ -45,24 +42,30 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 			</Stack>
 
 			{questions ? (
-        <>
-				  <div className="w-full flex justify-evenly  m-2 text-xs font-semibold">
-				  	<span>{questions[currentQuestion].category}</span>
-				  	<span>Score: {score}</span>
-				  </div>
-          <QuestionCard
-          currentQuestion={currentQuestion}
-          setCurrentQuestion= {setCurrentQuestion}
-          questions= {questions}
-          possibleAnswers= {possibleAnswers}
-          correct={questions[currentQuestion]?.correct_answer}
-          score={score}
-          setScore={setScore}
-          setQuestions={setQuestions}
-          />
-        </>
+				<>
+					<div className="w-full flex justify-evenly  m-2 text-xs font-semibold">
+						<span>{questions[currentQuestion].category}</span>
+						<span>Score: {score}</span>
+					</div>
+					<QuestionCard
+						currentQuestion={currentQuestion}
+						setCurrentQuestion={setCurrentQuestion}
+						questions={questions}
+						possibleAnswers={possibleAnswers}
+						correct={questions[currentQuestion]?.correct_answer}
+						score={score}
+						setScore={setScore}
+						setQuestions={setQuestions}
+					/>
+				</>
 			) : (
-				<div style={{ display: "flex", justifyContent: 'center',  }}><CircularProgress style={{ margin: 50, marginTop: '150px' }} size={200} thickness={5} /> </div>
+				<div style={{ display: "flex", justifyContent: "center" }}>
+					<CircularProgress
+						style={{ margin: 50, marginTop: "150px" }}
+						size={200}
+						thickness={5}
+					/>{" "}
+				</div>
 			)}
 		</div>
 	);

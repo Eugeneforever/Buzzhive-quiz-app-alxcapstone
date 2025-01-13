@@ -1,7 +1,6 @@
 // import { useState } from 'react'
 
 import "./App.css";
-import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { Routes, Route, BrowserRouter } from "react-router";
 import Home from "./pages/Home";
@@ -23,20 +22,19 @@ function App() {
 			}${difficulty && `&difficulty=${difficulty}`}&type=multiple`
 		);
 		setQuestions(data.results);
-    
 	};
 
 	return (
 		<BrowserRouter>
 			<div className="font-montserrat">
 				<Header />
-          
+
 				<Routes>
 					<Route path="/" element={<Intro />} />
 					<Route
 						path="/home"
 						element={
-              <Home
+							<Home
 								user={user}
 								setUser={setUser}
 								fetchQuestions={fetchQuestions}
@@ -55,9 +53,11 @@ function App() {
 							/>
 						}
 					/>
-					<Route path="/result" element={<Result score={score} user={user}/>} />
+					<Route
+						path="/result"
+						element={<Result score={score} user={user} />}
+					/>
 				</Routes>
-
 			</div>
 		</BrowserRouter>
 	);
