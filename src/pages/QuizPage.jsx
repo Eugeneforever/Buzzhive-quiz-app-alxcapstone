@@ -14,10 +14,12 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 					questions[currentQuestion]?.correct_answer,
 					...questions[currentQuestion]?.incorrect_answers,
 				])
-		);
+		);	
 	}, [currentQuestion, questions]);
 
-	const handleShuffle = (lists) => {
+		const handleShuffle = (lists) => {
+
+		console.log(lists); //checking if the list is shuffled in my console
 		return lists.sort(() => Math.random() - 0.5);
 	};
 
