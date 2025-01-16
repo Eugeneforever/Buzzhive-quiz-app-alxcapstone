@@ -15,14 +15,20 @@ function App() {
 	const baseUrl = `https://opentdb.com/api.php?amount=10&type=multiple`;
 
 	const fetchQuestions = async (category = "", difficulty = "") => {
-		const { data } = await axios.get(
+		try {
+			const response = await axios.get(
 			`${baseUrl}${category && `&category=${category}`}
 			${difficulty && `&difficulty=${difficulty}`}`
 		);
-		setQuestions(data.results);
-		console.log(data.results);
-	};
-	
+		console.log(response.data.results);
+		setQuestions(response.data.results);
+		return response.data.results;
+		
+	} catch (error) {
+		console.log('There is an error fetching the questions from Trivia API ', error);
+		return [];
+	}
+};
 
 	return (
 		<BrowserRouter>
