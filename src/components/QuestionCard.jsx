@@ -3,6 +3,8 @@ import "../components/QuestionStyle/QuestionCard.css";
 import { useNavigate } from "react-router";
 import { Button } from "@mui/material";
 import ErrorMessage from "./ErrorMessage";
+
+
 const QuestionCard = ({
 	currentQuestion,
 	setCurrentQuestion,
@@ -13,10 +15,18 @@ const QuestionCard = ({
 	setScore,
 	setQuestions
 }) => {
+
   const [selected, setSelected] = useState();
   const [error, setError] = useState(false);
 
   const navigate = useNavigate()
+
+  
+function decodeHtmlEntities(text) {
+	const p = new DOMParser();
+	return p.parseFromString(text, "text/html").body.textContent;
+}
+// decode html entities with this function
 
   const handleSelect = (item) => {
     if (selected === item && selected === correct) return "select";
@@ -42,14 +52,16 @@ const QuestionCard = ({
   const handleQuit = () => {
     setCurrentQuestion(0);
     setQuestions();
-  };
+  }; 
+  
+  const QuestionX = decodeHtmlEntities(questions[currentQuestion].question);
   
   return (
     <div className="question-container">
       <h1>Question {currentQuestion + 1} :</h1>
 
       <div className="current-question">
-        <h2>{questions[currentQuestion].question}</h2>
+        <h2>{QuestionX}</h2>
         <div className="possible-options">
           {error && <ErrorMessage>{error}</ErrorMessage>}
           {possibleAnswers &&
