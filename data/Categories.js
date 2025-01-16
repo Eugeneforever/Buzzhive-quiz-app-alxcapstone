@@ -17,10 +17,7 @@ const Categories = {
 			"id": 12,
 			"name": "Entertainment: Music"
 		  },
-		  {
-			"id": 13,
-			"name": "Entertainment: Musicals & Theatres"
-		  },
+		  
 		  {
 			"id": 14,
 			"name": "Entertainment: Television"

@@ -12,16 +12,17 @@ function App() {
 	const [user, setUser] = useState("");
 	const [questions, setQuestions] = useState();
 	const [score, setScore] = useState(0);
+	const baseUrl = `https://opentdb.com/api.php?amount=10&type=multiple`;
 
 	const fetchQuestions = async (category = "", difficulty = "") => {
 		const { data } = await axios.get(
-			`https://opentdb.com/api.php?amount=10${
-				category && `&category=${category}`
-			}${difficulty && `&difficulty=${difficulty}`}&type=multiple`
+			`${baseUrl}${category && `&category=${category}`}
+			${difficulty && `&difficulty=${difficulty}`}`
 		);
 		setQuestions(data.results);
-		console.log (data.results);
+		console.log(data.results);
 	};
+	
 
 	return (
 		<BrowserRouter>
@@ -56,7 +57,7 @@ function App() {
 						path="/result"
 						element={<Result score={score} user={user} setScore={setScore} />}
 					/>
-					<Route path="*" element={<NotFound />}/>
+					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</div>
 		</BrowserRouter>

@@ -6,7 +6,7 @@ import QuestionCard from "../components/QuestionCard";
 const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 	const [possibleAnswers, setPossibleAnswers] = useState();
 	const [currentQuestion, setCurrentQuestion] = useState(0);
-
+	//create state for possible answers and current questions
 	useEffect(() => {
 		setPossibleAnswers(
 			questions &&
@@ -23,7 +23,7 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 
 	return (
 		<div>
-			<Stack
+			<div className=" ease-in duration-300 cursor-pointer"><Stack
 				sx={{
 					width: "100%",
 					flexDirection: "column",
@@ -39,7 +39,7 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 					style={{ boxShadow: "4px 4px 12px  grey", fontWeight: "semi-bold" }}>
 					Welcome to the BuzzHive Quiz Game, {user}!
 				</Alert>
-			</Stack>
+			</Stack> </div>
 
 			{questions ? (
 				<>
@@ -64,7 +64,7 @@ const QuizPage = ({ user, questions, setQuestions, score, setScore }) => {
 						style={{ margin: 50, marginTop: "150px" }}
 						size={200}
 						thickness={5}
-					/>{" "}
+					/>
 				</div>
 			)}
 		</div>

@@ -9,7 +9,8 @@ const Home = ({ user, setUser, fetchQuestions }) => {
 	const [difficulty, setDifficulty] = useState("");
 	const [error, setError] = useState(false);
 
-	const navigation = useNavigate();
+	const navigation = useNavigate(); 
+	//use navigation hook to navigate to /quiz route at the click of a button
 
 	const handleSubmit = () => {
 		if (!user || !category || !difficulty) {
@@ -21,6 +22,8 @@ const Home = ({ user, setUser, fetchQuestions }) => {
 			navigation("/quiz");
 		}
 	};
+	
+	//create handleSubmit function that sets error to true when the user leaves a field empty or fetch questions when the user fills all fields
 	// const cates = Categories.trivia_categories.name
 	return (
 	<>
@@ -32,6 +35,8 @@ const Home = ({ user, setUser, fetchQuestions }) => {
 				onChange={(e) => setUser(e.target.value)}
 				// value={user}
 			/>
+			{/* create a text field for the user to enter their name and capture store value in a user state */}
+			
 			<TextField
 				select
 				label="Select Category"
@@ -45,6 +50,8 @@ const Home = ({ user, setUser, fetchQuestions }) => {
 					</MenuItem>
 				))}
 			</TextField>
+			{/* create a text field for the user to select a category and capture the value in a category state. Map categories to display it in a dropdown */}
+			
 			<TextField
 				select
 				label="Select Difficulty"
@@ -62,12 +69,16 @@ const Home = ({ user, setUser, fetchQuestions }) => {
 					Hard
 				</MenuItem>
 			</TextField>
+			{/* create a text field for the user to select a difficulty and capture the value in a difficulty state */}
+			
 			<Button
 				variant="contained"
 				style={{ width: "80%", padding: "5px" }}
 				onClick={handleSubmit}>
 				START QUIZ
 			</Button>
+			{/* create a button that calls the handleSubmit function when clicked and displays an alert if the user leaves a field empty */}
+			
 			{error && (
 				<Stack sx={{ width: "80%", marginTop: "20px" }} spacing={2}>
 					<Alert severity="warning">Empty fields needs to be filled in!</Alert>

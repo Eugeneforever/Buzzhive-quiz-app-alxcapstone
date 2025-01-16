@@ -45,17 +45,17 @@ const QuestionCard = ({
   };
   
   return (
-    <div className="question">
+    <div className="question-container">
       <h1>Question {currentQuestion + 1} :</h1>
 
-      <div className="singleQuestion">
+      <div className="current-question">
         <h2>{questions[currentQuestion].question}</h2>
-        <div className="options">
+        <div className="possible-options">
           {error && <ErrorMessage>{error}</ErrorMessage>}
           {possibleAnswers &&
             possibleAnswers.map((item) => (
               <button
-                className={`singleOption  ${selected && handleSelect(item)}`}
+                className={`single-Option  ${selected && handleSelect(item)}`}
                 key={item}
                 onClick={() => handleCheck(item)}
                 disabled={selected}
@@ -77,7 +77,7 @@ const QuestionCard = ({
           </Button>
           <Button
             variant="contained"
-            color="primary"
+            color="success"
             size="large"
             style={{ width: 185 }}
             onClick={handleNext}
